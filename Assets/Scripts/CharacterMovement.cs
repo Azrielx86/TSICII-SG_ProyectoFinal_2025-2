@@ -1,5 +1,7 @@
 using System;
+using Interactables;
 using UnityEngine;
+using SceneSelector = Interactables.SceneSelector;
 
 [RequireComponent((typeof(CharacterController)))]
 public class CharacterMovement : MonoBehaviour
@@ -10,7 +12,18 @@ public class CharacterMovement : MonoBehaviour
     public float jumpHeight;
     public float rotationSpeed;
     public bool lockOnStart = false;
+
+    [SerializeField]
     public Transform cameraTransform;
+
+    [SerializeField]
+    private float interactionRange = 3f;
+
+    [SerializeField]
+    private LayerMask interactableLayer;
+
+    [SerializeField]
+    public GlobalUI globalUI;
 
     private CharacterController _characterController;
     private Vector3 _velocity;
@@ -20,7 +33,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector2 _moveInput;
     private Vector2 _lookInput;
     private bool _isActive;
-    
+
     private float _verticalRotation = 0f;
 
     private void Awake()
@@ -39,6 +52,20 @@ public class CharacterMovement : MonoBehaviour
         _inputActions.Player.Look.canceled += _ => _lookInput = new Vector2(0, 0);
 
         _inputActions.Player.Window.performed += _ => ToggleControl(!_isActive);
+
+        _inputActions.Player.Interact.performed += _ => TryInteract();
+    }
+
+    private void TryInteract()
+    {
+        if (!Physics.Raycast(cameraTransform.position, cameraTransform.forward, out var hit, interactionRange,
+                interactableLayer))
+            return;
+
+        if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
+        {
+            interactable.Interact();
+        }
     }
 
     private void OnEnable()
@@ -54,10 +81,27 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         if (lockOnStart)
-         ToggleControl(true);
+            ToggleControl(true);
     }
 
     private void Update()
+    {
+        Move();
+
+        if (!Physics.Raycast(cameraTransform.position, cameraTransform.forward, out var hit, interactionRange,
+                interactableLayer))
+            return;
+
+        if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
+        {
+            if (interactable is SceneSelector sceneSelector)
+            {
+                // globalUI.interactablePrompt.text = $"Go to: {sceneSelector.sceneName}";
+            }
+        }
+    }
+
+    private void Move()
     {
         _isGrounded = _characterController.isGrounded;
         if (_isGrounded && _velocity.y <= 0)
@@ -78,7 +122,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void Rotate()
     {
-        if (_lookInput is { x: 0, y: 0 }) return;
+        if (_lookInput is { x: 0, y: 0 } || !_isActive) return;
 
         var yaw = _lookInput.x * rotationSpeed * Time.deltaTime;
         transform.Rotate(Vector3.up * yaw);
@@ -86,9 +130,6 @@ public class CharacterMovement : MonoBehaviour
         var pitch = -_lookInput.y * rotationSpeed * Time.deltaTime;
         _verticalRotation = Mathf.Clamp(_verticalRotation + pitch, -80f, 80f);
         cameraTransform.localEulerAngles = new Vector3(_verticalRotation, 0f, 0f);
-
-        // var rotation = new Vector3(0, _lookInput.x * rotationSpeed * Time.deltaTime, 0);
-        // transform.Rotate(rotation);
     }
 
     private void Jump()
