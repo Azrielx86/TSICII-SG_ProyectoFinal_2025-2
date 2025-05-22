@@ -39,9 +39,9 @@ Shader "TemasSelectos/relieve" {
             {
                 float d = tex2Dlod(_DispTex, float4(v.texcoord.xy,0,0)).r * _Displacement;
                 //.vertex.xyz += v.normal * d;
-                v.vertex.z += 0.1f * sin(50* v.vertex.z + _DeltaTime);
-                v.vertex.x += 0.1f * cos(50* v.vertex.x + _DeltaTime);
-                v.vertex.y += 0.1f * sin(50 * v.vertex.x + 50 * v.vertex.z + _DeltaTime);
+                v.vertex.z += 0.1f * sin(10* v.vertex.z + _DeltaTime);
+                v.vertex.x += 0.01f * cos(10*v.vertex.x + _DeltaTime);
+                v.vertex.y += 0.1f * sin(10 * v.vertex.x + 10 * v.vertex.z + _DeltaTime);
             }
 
             struct Input {
