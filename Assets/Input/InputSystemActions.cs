@@ -574,7 +574,7 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/t"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Window"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
