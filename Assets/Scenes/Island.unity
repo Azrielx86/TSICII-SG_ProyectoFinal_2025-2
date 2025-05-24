@@ -359,10 +359,10 @@ Terrain:
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: f8bfb6f9b8fd21940864e0cdfdb162af, type: 2}
   m_TreeDistance: 5000
-  m_TreeBillboardDistance: 50
+  m_TreeBillboardDistance: 229
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 80
+  m_DetailObjectDistance: 205
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
@@ -442,6 +442,11 @@ MonoBehaviour:
   rotationSpeed: 30
   lockOnStart: 0
   cameraTransform: {fileID: 475905736}
+  interactionRange: 3
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  globalUI: {fileID: 0}
 --- !u!143 &1633996656
 CharacterController:
   m_ObjectHideFlags: 0
