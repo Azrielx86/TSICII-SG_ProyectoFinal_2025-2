@@ -15,5 +15,5 @@ MonoBehaviour:
   Subdomain: tscii
   AppId: 682e468c459f37cd4405b360
   EnableLogging: 0
-  EnableAnalytics: 1
+  EnableAnalytics: 0
   BodyType: 1
