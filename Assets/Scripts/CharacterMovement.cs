@@ -21,9 +21,6 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField]
     private LayerMask interactableLayer;
 
-    [SerializeField]
-    public GlobalUI globalUI;
-
     private CharacterController _characterController;
     private Vector3 _velocity;
     private bool _isRunning;
@@ -53,6 +50,16 @@ public class CharacterMovement : MonoBehaviour
         _inputActions.Player.Window.performed += _ => ToggleControl(!_isActive);
 
         _inputActions.Player.Interact.performed += _ => TryInteract();
+
+        _inputActions.Player.Exit.performed += _ => ExitGame();
+    }
+
+    private static void ExitGame()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 
     private void TryInteract()
