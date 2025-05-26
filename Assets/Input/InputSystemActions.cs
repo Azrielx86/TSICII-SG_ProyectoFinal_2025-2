@@ -1154,6 +1154,15 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Light"",
+                    ""type"": ""Button"",
+                    ""id"": ""8549efdf-8745-4461-8935-2b350f368735"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1365,6 +1374,17 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
                     ""action"": ""Exit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""021b0e6b-fd8a-4270-9492-5c00dca93433"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Light"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1464,6 +1484,7 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
         m_Submarine_Up = m_Submarine.FindAction("Up", throwIfNotFound: true);
         m_Submarine_Down = m_Submarine.FindAction("Down", throwIfNotFound: true);
         m_Submarine_Exit = m_Submarine.FindAction("Exit", throwIfNotFound: true);
+        m_Submarine_Light = m_Submarine.FindAction("Light", throwIfNotFound: true);
     }
 
     ~@InputSystemActions()
@@ -1942,6 +1963,7 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Submarine_Up;
     private readonly InputAction m_Submarine_Down;
     private readonly InputAction m_Submarine_Exit;
+    private readonly InputAction m_Submarine_Light;
     /// <summary>
     /// Provides access to input actions defined in input action map "Submarine".
     /// </summary>
@@ -1977,6 +1999,10 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Submarine/Exit".
         /// </summary>
         public InputAction @Exit => m_Wrapper.m_Submarine_Exit;
+        /// <summary>
+        /// Provides access to the underlying input action "Submarine/Light".
+        /// </summary>
+        public InputAction @Light => m_Wrapper.m_Submarine_Light;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -2021,6 +2047,9 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
             @Exit.started += instance.OnExit;
             @Exit.performed += instance.OnExit;
             @Exit.canceled += instance.OnExit;
+            @Light.started += instance.OnLight;
+            @Light.performed += instance.OnLight;
+            @Light.canceled += instance.OnLight;
         }
 
         /// <summary>
@@ -2050,6 +2079,9 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
             @Exit.started -= instance.OnExit;
             @Exit.performed -= instance.OnExit;
             @Exit.canceled -= instance.OnExit;
+            @Light.started -= instance.OnLight;
+            @Light.performed -= instance.OnLight;
+            @Light.canceled -= instance.OnLight;
         }
 
         /// <summary>
@@ -2353,5 +2385,12 @@ public partial class @InputSystemActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnExit(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Light" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLight(InputAction.CallbackContext context);
     }
 }

@@ -12,6 +12,7 @@ Shader "Antarctica/Sea" {
     SubShader {
         Tags { "RenderType"="Opaque" }
         LOD 300
+        Cull Off
         
         CGPROGRAM
         #pragma surface surf BlinnPhong addshadow fullforwardshadows vertex:disp tessellate:tessFixed nolightmap

@@ -64,6 +64,14 @@ public class SubmarineController : MonoBehaviour
 
         _inputActions.Submarine.Exit.performed += _ => ExitMode();
 
+        _inputActions.Submarine.Light.performed += _ => ToggleLight();
+
+    }
+
+    private void ToggleLight()
+    {
+        var lightSb = lightTransform.GetComponent<Light>();
+        lightSb.enabled = !lightSb.enabled;
     }
 
     private void ExitMode()
