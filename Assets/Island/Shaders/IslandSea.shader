@@ -39,7 +39,7 @@ Shader "Island/Sea" {
             void disp (inout appdata v)
             {
                 float d = tex2Dlod(_DispTex, float4(v.texcoord.xy,0,0)).r * _Displacement;
-                // v.vertex.xyz += v.normal * d;
+                v.vertex.xyz += v.normal * d;
                 v.vertex.xyz += v.normal * sin(v.vertex.x + _DeltaTime) * 0.1;
                 v.vertex.xyz += v.normal * sin(v.vertex.z + _DeltaTime) * 0.1;
                 // v.vertex.z += 0.01 * sin(25.0 * v.vertex.y - _DeltaTime);

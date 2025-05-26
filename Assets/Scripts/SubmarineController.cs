@@ -16,6 +16,12 @@ public class SubmarineController : MonoBehaviour
     public Transform cameraTransform;
 
     [SerializeField]
+    public Transform lightTransform;
+
+    [SerializeField]
+    public Light globalLight;
+    
+    [SerializeField]
     private float interactionRange = 3f;
 
     [SerializeField]
@@ -57,6 +63,7 @@ public class SubmarineController : MonoBehaviour
         _inputActions.Submarine.Window.performed += _ => ToggleControl(!_isActive);
 
         _inputActions.Submarine.Exit.performed += _ => ExitMode();
+
     }
 
     private void ExitMode()
@@ -67,11 +74,14 @@ public class SubmarineController : MonoBehaviour
         this.gameObject.SetActive(false);
         
         characterCamera.enabled = true;
-        mainCharacterControl.SetActive(true);   
+        mainCharacterControl.SetActive(true);
+
+        globalLight.intensity = 1;
     }
 
     private void OnEnable()
     {
+        globalLight.intensity = 0;
         _inputActions.Enable();
     }
 
@@ -120,6 +130,7 @@ public class SubmarineController : MonoBehaviour
         var pitch = -_lookInput.y * rotationSpeed * Time.deltaTime;
         _verticalRotation = Mathf.Clamp(_verticalRotation + pitch, -80f, 80f);
         cameraTransform.localEulerAngles = new Vector3(_verticalRotation, 0f, 0f);
+        lightTransform.localEulerAngles = cameraTransform.localEulerAngles;
     }
 
     private void ToggleControl(bool state)
