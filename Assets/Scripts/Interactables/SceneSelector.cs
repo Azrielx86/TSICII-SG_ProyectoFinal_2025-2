@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Interactables
 {
@@ -8,7 +9,8 @@ namespace Interactables
         
         public void Interact()
         {
-            Debug.Log("This is in the interactable zone.");
+            Debug.Log("Changing scene");
+            SceneManager.LoadScene(sceneName);
         }
 
         public void ShowHint()
