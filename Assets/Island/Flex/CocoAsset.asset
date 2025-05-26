@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461adf82cf1f1a248af57734e067d54e, type: 3}
+  m_Name: CocoAsset
+  m_EditorClassIdentifier: 
+  m_particles:
+  - {x: -0.05001019, y: -0.10146219, z: -0.05000002, w: 1}
+  - {x: -0.05001019, y: -0.10146219, z: 0.049999975, w: 1}
+  - {x: -0.05001019, y: -0.0014621958, z: -0.05000002, w: 1}
+  - {x: -0.05001019, y: -0.0014621958, z: 0.049999975, w: 1}
+  - {x: -0.05001019, y: 0.098537825, z: -0.05000002, w: 1}
+  - {x: -0.05001019, y: 0.098537825, z: 0.049999975, w: 1}
+  - {x: 0.049989805, y: -0.10146219, z: -0.05000002, w: 1}
+  - {x: 0.049989805, y: -0.10146219, z: 0.049999975, w: 1}
+  - {x: 0.049989805, y: -0.0014621958, z: -0.05000002, w: 1}
+  - {x: 0.049989805, y: -0.0014621958, z: 0.049999975, w: 1}
+  - {x: 0.049989805, y: 0.098537825, z: -0.05000002, w: 1}
+  - {x: 0.049989805, y: 0.098537825, z: 0.049999975, w: 1}
+  m_maxParticles: 12
+  m_springIndices: 
+  m_springCoefficients: []
+  m_springRestLengths: []
+  m_shapeIndices: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b000000
+  m_shapeOffsets: 0c000000
+  m_shapeCoefficients:
+  - 1
+  m_shapeCenters:
+  - {x: -0.000010192394, y: -0.0014621858, z: -0.000000021100277}
+  m_triangleIndices: 
+  m_inflatable: 0
+  m_inflatableVolume: 0
+  m_inflatablePressure: 0
+  m_inflatableStiffness: 0
+  m_fixedParticles: 
+  m_rebuildAsset: 0
+  m_boundaryMesh: {fileID: 1731977421860509, guid: 55e342cf4b81f8444b0673d89a9a1b83, type: 3}
+  m_meshLocalScale: {x: 1, y: 1, z: 1}
+  m_meshExpansion: 0
+  m_particleSpacing: 0.1

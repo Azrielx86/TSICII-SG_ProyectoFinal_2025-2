@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12696b20f2e49519c1b2a403a76778b, type: 3}
   m_Name: CoreSettings
   m_EditorClassIdentifier: 
-  Subdomain: antarctica
-  AppId: 682e468589ad568f13c4d29b
+  Subdomain: tscii
+  AppId: 682e468c459f37cd4405b360
   EnableLogging: 0
-  EnableAnalytics: 1
+  EnableAnalytics: 0
   BodyType: 1

@@ -3452,7 +3452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5079932738637831229, guid: b5e780cfda18ab9469c25deff06532aa, type: 3}
       propertyPath: avatarUrl
-      value: https://models.readyplayer.me/682e4921faa98cdfbb23052a.glb
+      value: https://models.readyplayer.me/682e4bd0092177c0ba3b90e8.glb
       objectReference: {fileID: 0}
     - target: {fileID: 5079932738637831229, guid: b5e780cfda18ab9469c25deff06532aa, type: 3}
       propertyPath: loadOnStart
