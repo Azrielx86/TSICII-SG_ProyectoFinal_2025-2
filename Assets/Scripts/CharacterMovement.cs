@@ -88,15 +88,15 @@ public class CharacterMovement : MonoBehaviour
     {
         Move();
 
-        if (!Physics.Raycast(cameraTransform.position, cameraTransform.forward, out var hit, interactionRange,
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out var hit, interactionRange,
                 interactableLayer))
-            return;
-
-        if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
         {
-            if (interactable is SceneSelector sceneSelector)
+            if (hit.collider.TryGetComponent<IInteractable>(out var interactable))
             {
-                // globalUI.interactablePrompt.text = $"Go to: {sceneSelector.sceneName}";
+                interactable.ShowHint();
+                if (interactable is CameraChangerItem camChange)
+                {
+                }
             }
         }
     }
